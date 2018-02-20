@@ -1,3 +1,31 @@
+In this fork make two pull request :
+1. Making cmd-split-window -v/-h works as expected #1247
+2. Making cmd-join-window -bv/-bh works as expected #1263
+
+1. Making cmd-split-window -v/-h works as expected #1247
+my suggestion can fix the problem of the split-window command, :
+
+:split-window -v is horisiontal split window actually instead of vertal split window.
+:split-window -h is vertical split window actually instead of horisiontal split window.
+these action are not as we expected intutively and not consistent with the manual descritipion in the split-window part.
+The following are four popular tmux config file in github which are aware of this problem:
+gf3/dotfiles(the line 42, and 45) 782 stars on github
+tony/tmux-config(line 7) 1135 stars on github
+square/maximum-awesome (line 27, 28). 4921 stars
+gpakosz/.tmux (line 65, 68). 3735 stars
+and the following is a vidwo on youtube realted the problem of split-window command(time-line 1:35):
+Create Custom Layout - Linux TMUX
+and related tmux config file
+
+2. Making cmd-join-window -bv/-bh works as expected #1263
+This problem is similar to pull request 1247, please refer it for more info. The unexpected result can be shown by the following example: if we have two window %0 and %1 in current tmux client , then in the window %0 :
+
+:join-pane -bv -t %1, we get a horisiontal split window instead of a vertical split window as the v in -bv suggested.
+:join-pane -bh -t %1. we get a vertical split window instead of a **horisiontal split window as the h in -bh suggested.
+just exchange the line 102 and 104 can fix this problem.
+
+the following is from the original tmux project.
+========================================================================================================================================
 Welcome to tmux!
 
 tmux is a "terminal multiplexer", it enables a number of terminals (or windows)
