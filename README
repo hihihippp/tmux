@@ -1,4 +1,4 @@
-In this fork make two pull request :
+In this fork, two pull request was made:
 1. Making cmd-split-window -v/-h works as expected #1247
 2. Making cmd-join-window -bv/-bh works as expected #1263
 
